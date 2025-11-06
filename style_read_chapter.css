@@ -1,0 +1,277 @@
+/* Reset & Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1a1a1a;
+    color: #ffffff;
+    line-height: 1.6;
+}
+
+/* Reader Header */
+.reader-header {
+    background: #2d2d2d;
+    padding: 15px 20px;
+    border-bottom: 1px solid #404040;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.reader-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.chapter-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffffff;
+    text-align: center;
+    flex: 1;
+}
+
+.chapter-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 5px;
+}
+
+.comic-name {
+    font-size: 0.9rem;
+    color: #cccccc;
+}
+
+.chapter-meta {
+    font-size: 0.8rem;
+    color: #999999;
+}
+
+/* Buttons */
+.btn {
+    padding: 10px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.btn-back {
+    background: #404040;
+    color: #ffffff;
+}
+
+.btn-back:hover {
+    background: #505050;
+}
+
+.btn-nav {
+    background: #007bff;
+    color: white;
+    min-width: 140px;
+    justify-content: center;
+}
+
+.btn-nav:hover {
+    background: #0056b3;
+    transform: translateY(-1px);
+}
+
+.btn-disabled {
+    background: #404040;
+    color: #666666;
+    cursor: not-allowed;
+}
+
+.btn-control {
+    background: #404040;
+    color: #ffffff;
+    padding: 8px 12px;
+    font-size: 1rem;
+}
+
+.btn-control:hover {
+    background: #505050;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid #007bff;
+    color: #007bff;
+}
+
+.btn-outline:hover {
+    background: #007bff;
+    color: white;
+}
+
+.btn-primary {
+    background: #007bff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #0056b3;
+}
+
+/* Chapter Navigation */
+.chapter-navigation {
+    background: #2d2d2d;
+    padding: 15px 20px;
+    border-bottom: 1px solid #404040;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.chapter-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.zoom-level {
+    color: #cccccc;
+    font-size: 0.9rem;
+    min-width: 40px;
+    text-align: center;
+}
+
+/* Pages Container */
+.pages-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.page-item {
+    text-align: center;
+    background: #2d2d2d;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.comic-page {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.3s ease;
+}
+
+.page-number {
+    color: #999999;
+    font-size: 0.9rem;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Bottom Navigation */
+.bottom-navigation {
+    background: #2d2d2d;
+    padding: 20px;
+    border-top: 1px solid #404040;
+    margin-top: 30px;
+}
+
+/* No Pages State */
+.no-pages {
+    text-align: center;
+    padding: 60px 40px;
+    color: #999999;
+}
+
+.empty-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    opacity: 0.5;
+}
+
+.no-pages h3 {
+    color: #cccccc;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+.no-pages p {
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+}
+
+/* Fullscreen Mode */
+body:fullscreen .pages-container {
+    max-width: 100%;
+    padding: 10px;
+}
+
+body:fullscreen .comic-page {
+    max-height: 95vh;
+    width: auto;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .reader-nav {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+    
+    .chapter-title {
+        order: -1;
+        font-size: 1.1rem;
+    }
+    
+    .nav-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .chapter-controls {
+        order: -1;
+    }
+    
+    .pages-container {
+        padding: 10px;
+    }
+    
+    .page-item {
+        padding: 5px;
+    }
+}
+
+/* Loading Animation */
+.comic-page {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
